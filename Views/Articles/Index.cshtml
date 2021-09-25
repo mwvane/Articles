@@ -1,0 +1,42 @@
+﻿@using articles.Models
+@model IEnumerable<Article>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-8 ">
+            <div class="my-4">
+                @if (ViewBag.Message != null)
+                {
+                    <p class="alert alert-success">@ViewBag.Message</p>
+                }
+            </div>
+            <div>
+                <a href="/Articles/Create" class="btn btn-primary">
+                    Create new article
+                </a>
+            </div>
+            @foreach (Article article in Model)
+            {
+                <div class="card shadow border-0 my-5">
+                    <div class="card-header d-flex justify-content-between">
+                        <h5>@article.Title</h5>
+                        <div>
+                            <a href='@Url.Action("Update","Articles",new { id = article.Id })' class="btn btn-outline-primary">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a href="@Url.Action("Delete","Articles",new { id = article.Id })" class="btn btn-outline-danger">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>@article.Description</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

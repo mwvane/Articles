@@ -1,0 +1,27 @@
+﻿@using articles.Models;
+@model Article
+
+<div class="row justify-content-center">
+    <div class="col-8">
+        @using (Html.BeginForm("CreateOrUpdate", "Articles"))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="Id" value="@Model.Id" />
+
+            <div class="mt-2">
+                @Html.DisplayNameFor(m => m.Title)
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+
+            </div>
+            <div class="mt-2">
+                @Html.DisplayNameFor(m => m.Description)
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+            </div>
+
+            <button class="btn btn-primary mt-2">
+                Submit
+            </button>
+        }
+    </div>
+</div>
+

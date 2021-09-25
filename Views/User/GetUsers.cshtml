@@ -1,0 +1,12 @@
+﻿@model IEnumerable<articles.Models.User> 
+
+
+@foreach (articles.Models.User user in Model)
+{
+    <div>
+        <p> @user.Name </p>
+        <p> @ViewBag.flag </p>
+    </div>
+}
+
+@String.IsNullOrEmpty
